@@ -1,0 +1,8 @@
+docs/
+node_modules/
+dist/
+.env
+nul
+remove_comments.cjs
+
+paper-repo/
