@@ -6,3 +6,5 @@ nul
 remove_comments.cjs
 
 paper-repo/
+
+.desloppify/

@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { api, type ApiConfig, type FingerprintDetail, type Insights, type EventListItem, type Paginated } from "../lib/api";
-import { navigate } from "../App";
+import { navigate } from "../navigation";
 import { useAsync } from "../lib/useAsync";
 import {
   Button,

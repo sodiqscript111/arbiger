@@ -37,9 +37,7 @@ function parseHash(): Route {
   return { name: "fingerprints", params: {} };
 }
 
-export function navigate(path: string) {
-  window.location.hash = path;
-}
+
 
 export function App() {
   const { data, setWorkspaces, setActiveWorkspace } = useAuth();

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, ChevronDown, Check, Copy } from "lucide-react";
 import { useAuth } from "../../state/auth";
-import { navigate } from "../../App";
+import { navigate } from "../../navigation";
 
 function ProjectSwitcher() {
   const [open, setOpen] = useState(false);

@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { AlertCircle, AlertTriangle, ArrowRight, Zap, RefreshCw, XCircle, FileWarning, Clock, Database, CloudRain } from "lucide-react";
 import type { IncidentListItem, RootCauseCategory } from "../../../src/types";
-import { navigate } from "../App";
+import { navigate } from "../navigation";
 import { api, type ApiConfig } from "../lib/api";
 
 interface Props {

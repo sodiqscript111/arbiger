@@ -20,7 +20,13 @@ export class OpenAIDiagnosisProvider implements DiagnosisProvider {
         WHERE id = ${incidentId} AND tenant_id = ${tenantId}
       `;
       if (incidentRows.length === 0) return;
-      const incident = incidentRows[0] as any;
+      interface IncidentRow {
+        title: string;
+        root_cause_category: string | null;
+        window_start: Date;
+        window_end: Date;
+      }
+      const incident = incidentRows[0] as unknown as IncidentRow;
 
       const fpRows = await sql`
         SELECT f.id, f.handler, f.error_type, i.event_count,
@@ -40,10 +46,17 @@ export class OpenAIDiagnosisProvider implements DiagnosisProvider {
       if (fpRows.length === 0) return;
 
       
+      interface FingerprintRow {
+        handler: string;
+        error_type: string;
+        event_count: number;
+        sample_messages: string[] | null;
+        sample_stack: string | null;
+      }
       const incidentContext = {
         title: incident.title,
         category: incident.root_cause_category,
-        fingerprints: fpRows.map((r: any) => ({
+        fingerprints: (fpRows as unknown as FingerprintRow[]).map((r) => ({
           handler: r.handler,
           error_type: r.error_type,
           event_count: r.event_count,
@@ -95,6 +108,7 @@ Respond ONLY with a valid JSON object matching this schema:
       console.log(`[OpenAI] Analyzed incident ${incidentId}`);
     } catch (err) {
       console.error(`[OpenAI] Failed to analyze incident ${incidentId}:`, err);
+      throw err;
     }
   }
 }

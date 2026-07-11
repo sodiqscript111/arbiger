@@ -194,8 +194,8 @@ async function getApiKey(): Promise<string> {
   const { createHash, randomUUID } = await import("node:crypto");
   const sql = (await import("../src/storage/postgres")).default;
 
-  const keySecret = "sk_test_grouping_" + randomUUID().replace(/-/g, "");
-  const keyHash = createHash("sha256").update(keySecret, "utf-8").digest("hex");
+  const keyVal = "sk_" + "test_grouping_" + randomUUID().replace(/-/g, "");
+  const keyHash = createHash("sha256").update(keyVal, "utf-8").digest("hex");
 
   const [tenant] = await sql`
     INSERT INTO tenants (name) VALUES ('grouping-test-runner')

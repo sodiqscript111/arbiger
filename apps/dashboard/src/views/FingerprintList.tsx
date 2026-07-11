@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, type ApiConfig, type FingerprintListItem, type Paginated } from "../lib/api";
-import { navigate } from "../App";
+import { navigate } from "../navigation";
 import { Button, Card, Input, Spinner, StatusBadge, SignalBadge, Empty, ErrorBox } from "../components/ui";
 import { IconSearch, IconLayers, IconChevron } from "../components/icons";
 import { timeAgo, fmtNum, shortHash } from "../lib/format";

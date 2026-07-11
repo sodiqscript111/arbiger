@@ -137,7 +137,7 @@ export async function correlate(
       const openIncId = openInc.id as string;
       
       const openFps = await sql`SELECT fingerprint_id FROM incident_fingerprints WHERE incident_id = ${openIncId}`;
-      const openFpIds = openFps.map((r: any) => r.fingerprint_id as string);
+      const openFpIds = openFps.map((r: { fingerprint_id: string }) => r.fingerprint_id);
       
       const overlap = draftFpKeys.filter(fp => openFpIds.includes(fp)).length;
       const requiredOverlap = Math.max(1, Math.ceil(Math.min(openFpIds.length, draftFpKeys.length) * config.overlap_threshold));
@@ -179,7 +179,7 @@ export async function correlate(
     
     
     const existingFpsRows = await sql`SELECT fingerprint_id FROM incident_fingerprints WHERE incident_id = ${matchedIncidentId}`;
-    const allFpIds = Array.from(new Set([...draftFpKeys, ...existingFpsRows.map((r: any) => r.fingerprint_id)]));
+    const allFpIds = Array.from(new Set([...draftFpKeys, ...existingFpsRows.map((r: { fingerprint_id: string }) => r.fingerprint_id)]));
 
     if (allFpIds.length > 0) {
       const fpCounts = await sql`
@@ -194,8 +194,8 @@ export async function correlate(
       
       let totalEvents = 0;
       for (const r of fpCounts) {
-        const fpId = (r as any).fingerprint_id;
-        const cnt = (r as any).cnt;
+        const fpId = (r as { fingerprint_id: string }).fingerprint_id;
+        const cnt = (r as { cnt: number }).cnt;
         totalEvents += cnt;
         
         await sql`

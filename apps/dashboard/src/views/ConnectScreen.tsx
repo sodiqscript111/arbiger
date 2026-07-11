@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../state/auth";
-import { navigate } from "../App";
+import { navigate } from "../navigation";
 import { Button, Input, Card, ErrorBox } from "../components/ui";
 
 const DEFAULT_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? "http:

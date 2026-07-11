@@ -1,5 +1,5 @@
 import { api, type ApiConfig, type EventDetail } from "../lib/api";
-import { navigate } from "../App";
+import { navigate } from "../navigation";
 import { useAsync } from "../lib/useAsync";
 import { Card, Spinner, SignalBadge, Empty, ErrorBox } from "../components/ui";
 import { IconArrowLeft, IconBolt } from "../components/icons";

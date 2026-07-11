@@ -14,7 +14,7 @@ import {
   ListFilter
 } from "lucide-react";
 import type { IncidentDetail, RootCauseCategory } from "../../../src/types";
-import { navigate } from "../App";
+import { navigate } from "../navigation";
 import { api, type ApiConfig } from "../lib/api";
 
 interface Props {

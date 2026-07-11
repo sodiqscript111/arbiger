@@ -3,7 +3,7 @@ import { createHash, randomUUID } from "node:crypto";
 
 const API_BASE = process.env.API_BASE || "http://localhost:3000";
 let TENANT_ID = "d91c3687-6db4-4d82-b713-66ca4cac11c0";
-const API_KEY: string = "sk_test_7fe41d9f72544da8baea7cfb3b80181d";
+const API_KEY: string = process.env.API_KEY || "";
 
 // ── Setup ──────────────────────────────────────────────────────────────────
 

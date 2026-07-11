@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Moon, Sun, AlertTriangle, Settings, LayoutDashboard, LogOut, ChevronDown } from "lucide-react";
-import { navigate } from "../../App";
+import { navigate } from "../../navigation";
 import { useAuth } from "../../state/auth";
 
 const navItemBase =
